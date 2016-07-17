@@ -203,13 +203,13 @@ extension ComponentNodeType {
     
     /// Returns the components with the associated reuse identifier.
     /// - parameter identifier: The identifier passed as argument in the component's constructor
-    public func componenstWithIdentifier(identifier: String) -> [ComponentNodeType] {
+    public func componentsWithIdentifier(identifier: String) -> [ComponentNodeType] {
         var result = [ComponentNodeType]()
         if self.reuseIdentifier == identifier {
             result.append(self)
         }
         for child in self.children {
-            result.appendContentsOf(child.componenstWithIdentifier(identifier))
+            result.appendContentsOf(child.componentsWithIdentifier(identifier))
         }
         return result
     }
@@ -217,7 +217,7 @@ extension ComponentNodeType {
     /// Returns the first component with the associated reuse identifier.
     /// - parameter identifier: The identifier passed as argument in the component's constructor
     public func componentWithIdentifier(identifier: String) -> ComponentNodeType? {
-        return self.componenstWithIdentifier(identifier).first
+        return self.componentsWithIdentifier(identifier).first
     }
     
     /// Returns the view with the associated identifier.
